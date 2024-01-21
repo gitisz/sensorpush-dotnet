@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1DA751BA-AE40-4EBE-B864-906F16627385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorPushTask", "src\SensorPushTask\SensorPushTask.csproj", "{046D17CF-21A2-4689-8F32-851B28645BB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{046D17CF-21A2-4689-8F32-851B28645BB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{046D17CF-21A2-4689-8F32-851B28645BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{046D17CF-21A2-4689-8F32-851B28645BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{046D17CF-21A2-4689-8F32-851B28645BB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{046D17CF-21A2-4689-8F32-851B28645BB0} = {1DA751BA-AE40-4EBE-B864-906F16627385}
+	EndGlobalSection
+EndGlobal

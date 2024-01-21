@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  sensorpush:
+    image: your-hub/sensorpush-dotnet
+    environment:
+      USERNAME: "${USERNAME}"
+      PASSWORD: "${PASSWORD}"
+      INFLUX_DB_V2_TOKEN: "${INFLUX_DB_V2_TOKEN}"
+      INFLUX_DB_V2_ORG: "${INFLUX_DB_V2_ORG}"
