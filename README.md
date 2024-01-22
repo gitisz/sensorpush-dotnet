@@ -25,7 +25,7 @@ Reference `appsettings.Development.json` and update the correct values for your 
       - Note: Do not provide the actual login . When starting this application, an environment variable should be set with the actual login that matches the key.
     - **PasswordKey**: Specify an environment variable key for the SensorPush password.
       - Note: Do not provide the actual password . When starting this application, an environment variable should be set with the actual password that matches the key.
-  - **"Measures"**: Specify an array of the measurements you wish to collect.
-    - [ "temperature", "humidity", "vpd", "barometric_pressure", "dewpoint" ]
+  - **Measures**: Specify an array of the measurements you wish to collect.
+    - `[ "temperature", "humidity", "vpd", "barometric_pressure", "dewpoint" ]`
 
 
