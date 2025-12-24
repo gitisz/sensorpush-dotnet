@@ -23,9 +23,15 @@ public class SensorPushProvider
 
     public async Task<SensorPushAuthorization?> LoginAsync()
     {
-        var authorization = new SensorPushAuthorization { };
-        var email = Environment.GetEnvironmentVariable(_configuration["SensorPush:Login:UserNameKey"] ?? "");
-        var password = Environment.GetEnvironmentVariable(_configuration["SensorPush:Login:PasswordKey"] ?? "");
+        var emailKey = _configuration["SensorPush:Login:UserNameKey"] ?? "USERNAME";
+        var passwordKey = _configuration["SensorPush:Login:PasswordKey"] ?? "PASSWORD";
+
+        var email = Environment.GetEnvironmentVariable(emailKey);
+        var password = Environment.GetEnvironmentVariable(passwordKey);
+
+        _logger.LogDebug("Login attempt - Email present: {EmailPresent}, Password present: {PasswordPresent}",
+            !string.IsNullOrEmpty(email), !string.IsNullOrEmpty(password));
+        _logger.LogDebug("Using env keys: {EmailKey}, {PasswordKey}", emailKey, passwordKey);
 
         using StringContent jsonContent = new(
             JsonSerializer.Serialize(new
@@ -38,15 +44,20 @@ public class SensorPushProvider
         );
 
         var response = await _httpClient.PostAsync("oauth/authorize", jsonContent);
+        var responseContent = await response.Content.ReadAsStringAsync();
+
+        _logger.LogWarning("OAuth authorize response: {StatusCode} - {Content}",
+            response.StatusCode, responseContent);
 
         if (response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
-
-            authorization = JsonSerializer.Deserialize<SensorPushAuthorization>(content);
+            var authorization = JsonSerializer.Deserialize<SensorPushAuthorization>(responseContent);
+            _logger.LogInformation("Login successful");
+            return authorization;
         }
 
-        return authorization;
+        _logger.LogError("Login failed: {StatusCode} - {Content}", response.StatusCode, responseContent);
+        return null;
     }
 
     public async Task<SensorPushAccessToken?> GetAccessTokenAsync(string? authorization)
@@ -96,7 +107,6 @@ public class SensorPushProvider
 
         return sensorPushSample;
     }
-
 
     public async Task<SensorPushSample?> GetSamplesAsync(string? accessToken)
     {
