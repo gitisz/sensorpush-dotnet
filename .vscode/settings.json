@@ -4,5 +4,6 @@
         "dewpoint",
         "rssi",
         "sensorpush"
-    ]
+    ],
+    "FSharp.suggestGitignore": false
 }
