@@ -124,6 +124,9 @@ influx-client-write: The data was successfully written to InfluxDB 2.
 
 Import `grafana-dashboard.json` into your Grafana instance connected to the `sensorpush_dotnet` bucket to visualize SensorPush metrics.
 
+<img width="1728" height="1000" alt="image" src="https://github.com/user-attachments/assets/f23491d6-3726-420e-9bee-205b0ad8f0dd" />
+
+
 ## Acknowledgements
 
 This project uses a Grafana dashboard that was based from [bolausson/SensorPush](https://github.com/bolausson/SensorPush).
