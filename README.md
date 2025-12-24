@@ -119,3 +119,11 @@ influx-client-write: The data was successfully written to InfluxDB 2.
 1. **Connection failed**: Verify `INFLUX_DB_V2_*` vars point to **your** InfluxDB v2
 2. **Auth errors**: Check SensorPush `USERNAME`/`PASSWORD`
 3. **No data**: Verify InfluxDB token has write access to `sensorpush_dotnet` bucket
+
+## Grafana Dashboard
+
+Import `grafana-dashboard.json` into your Grafana instance connected to the `sensorpush_dotnet` bucket to visualize SensorPush metrics.
+
+## Acknowledgements
+
+This project uses a Grafana dashboard that was based from [bolausson/SensorPush](https://github.com/bolausson/SensorPush).
