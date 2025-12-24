@@ -181,7 +181,7 @@
                     "measurement": "SensorPush",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")",
+                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\n  |> aggregateWindow(every: $__interval, fn: mean, createEmpty: false)",
                     "rawQuery": false,
                     "refId": "A",
                     "resultFormat": "time_series",
@@ -411,7 +411,7 @@
                     "measurement": "SensorPush",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")",
+                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\n  |> aggregateWindow(every: $__interval, fn: mean, createEmpty: false)",
                     "refId": "A",
                     "resultFormat": "time_series",
                     "select": [
@@ -641,7 +641,7 @@
                     "measurement": "SensorPush",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"dewpoint\")",
+                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"dewpoint\")\n  |> aggregateWindow(every: $__interval, fn: mean, createEmpty: false)",
                     "refId": "A",
                     "resultFormat": "time_series",
                     "select": [
@@ -900,7 +900,7 @@
                     "measurement": "SensorPush",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"humidity\")",
+                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"humidity\")\n  |> aggregateWindow(every: $__interval, fn: mean, createEmpty: false)",
                     "refId": "A",
                     "resultFormat": "time_series",
                     "select": [
@@ -955,22 +955,10 @@
                     "measurement": "SensorPush",
                     "orderByTime": "ASC",
                     "policy": "default",
+                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"abs_humidity\")\n  |> aggregateWindow(every: $__interval, fn: mean, createEmpty: false)",
+                    "rawQuery": true,
                     "refId": "B",
                     "resultFormat": "time_series",
-                    "select": [
-                        [
-                            {
-                                "params": [
-                                    "abs_humidity"
-                                ],
-                                "type": "field"
-                            },
-                            {
-                                "params": [],
-                                "type": "mean"
-                            }
-                        ]
-                    ],
                     "tags": [
                         {
                             "key": "sensor_name",
@@ -1187,7 +1175,7 @@
                     "measurement": "SensorPush",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"vpd\")",
+                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"vpd\")\n  |> aggregateWindow(every: $__interval, fn: mean, createEmpty: false)",
                     "rawQuery": false,
                     "refId": "A",
                     "resultFormat": "time_series",
@@ -1422,7 +1410,7 @@
                     "measurement": "SensorPush_V",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush_V\")\n  |> filter(fn: (r) => r[\"_field\"] == \"rssi\")",
+                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush_V\")\n  |> filter(fn: (r) => r[\"_field\"] == \"rssi\")\n  |> aggregateWindow(every: $__interval, fn: mean, createEmpty: false)",
                     "refId": "A",
                     "resultFormat": "time_series",
                     "select": [
@@ -1658,7 +1646,7 @@
                     "measurement": "SensorPush_V",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush_V\")\n  |> filter(fn: (r) => r[\"_field\"] == \"voltage\")",
+                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush_V\")\n  |> filter(fn: (r) => r[\"_field\"] == \"voltage\")\n  |> aggregateWindow(every: $__interval, fn: mean, createEmpty: false)",
                     "refId": "A",
                     "resultFormat": "time_series",
                     "select": [
@@ -1891,14 +1879,14 @@
                     "measurement": "SensorPush",
                     "orderByTime": "ASC",
                     "policy": "default",
-                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"pressure\")",
+                    "query": "from(bucket: \"sensorpush_dotnet\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"SensorPush\")\n  |> filter(fn: (r) => r[\"_field\"] == \"pressure\")\n  |> aggregateWindow(every: $__interval, fn: mean, createEmpty: false)",
                     "refId": "A",
                     "resultFormat": "time_series",
                     "select": [
                         [
                             {
                                 "params": [
-                                    "temperature"
+                                    "pressure"
                                 ],
                                 "type": "field"
                             },
