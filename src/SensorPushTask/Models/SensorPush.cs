@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using InfluxDB.Client.Core;
 
 namespace SensorPushTask.Models;
 
@@ -137,3 +138,52 @@ public class HumidityAlert
     public bool Enabled { get; set; } = default!;
 }
 
+[Measurement("SensorPush")]
+public class SensorPush
+{
+    [Column("sensor_id", IsTag = true)]
+    public string? SensorID { get; set; }
+
+    [Column("sensor_name", IsTag = true)]
+    public string? SensorName { get; set; }
+
+    [Column("abs_humidity")]
+    public double AbsHumidity { get; set; }
+
+    [Column("dewpoint")]
+    public double Dewpoint { get; set; }
+
+    [Column("humidity")]
+    public double Humidity { get; set; }
+
+    [Column("pressure")]
+    public double Pressure { get; set; }
+
+    [Column("temperature")]
+    public double Temperature { get; set; }
+
+    [Column("vpd")]
+    public double Vpd { get; set; }
+
+    [Column(IsTimestamp = true)]
+    public DateTimeOffset Time { get; set; }
+}
+
+[Measurement("SensorPush_V")]
+public class SensorPushV
+{
+    [Column("sensor_id", IsTag = true)]
+    public string? SensorID { get; set; }
+
+    [Column("sensor_name", IsTag = true)]
+    public string? SensorName { get; set; }
+
+    [Column("rssi")]
+    public int Rssi { get; set; }
+
+    [Column("voltage")]
+    public double Voltage { get; set; }
+
+    [Column(IsTimestamp = true)]
+    public DateTimeOffset Time { get; set; }
+}
